@@ -1,0 +1,7 @@
+C:\Users\Ivetta\source\repos\BlackJackGame\BlackJackGame\bin\Debug\BlackJackGame.exe.config
+C:\Users\Ivetta\source\repos\BlackJackGame\BlackJackGame\bin\Debug\BlackJackGame.exe
+C:\Users\Ivetta\source\repos\BlackJackGame\BlackJackGame\bin\Debug\BlackJackGame.pdb
+C:\Users\Ivetta\source\repos\BlackJackGame\BlackJackGame\obj\Debug\BlackJackGame.csprojAssemblyReference.cache
+C:\Users\Ivetta\source\repos\BlackJackGame\BlackJackGame\obj\Debug\BlackJackGame.csproj.CoreCompileInputs.cache
+C:\Users\Ivetta\source\repos\BlackJackGame\BlackJackGame\obj\Debug\BlackJackGame.exe
+C:\Users\Ivetta\source\repos\BlackJackGame\BlackJackGame\obj\Debug\BlackJackGame.pdb
