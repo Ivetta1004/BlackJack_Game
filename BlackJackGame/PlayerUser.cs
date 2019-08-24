@@ -8,48 +8,22 @@ namespace BlackJackGame
 {
     public struct PlayerUser
     {
-
-        DeckOfCards deck;
-
         public int UserPoints;
-
-        public void FirstGameUser(Random rnd)
+        public void FirstGameUser(Random rnd, DeckOfCards[] card)
         {
-
-            int firstCard = rnd.Next(deck.Points.Length);
-            int secondCard = rnd.Next(deck.Points.Length);
-
-            Console.WriteLine($"You receive {deck.Cards[firstCard]} and {deck.Cards[secondCard]}. Current points: {deck.Points[firstCard] + deck.Points[secondCard]}.");
-
-            UserPoints = deck.Points[firstCard] + deck.Points[secondCard];
-            
-            
+            int firstCard = rnd.Next(card.Length);
+            int secondCard = rnd.Next(card.Length);
+            UserPoints = (int)card[firstCard].Card + (int)card[secondCard].Card;
+            Console.WriteLine($"You receive {card[firstCard].Card} {card[firstCard].Suit} and {card[secondCard].Card} {card[secondCard].Suit}. " +
+                 $"Current points: {UserPoints}.");
         }
-
-        public void GameUser(Random rnd)
+        public void GameUser(Random rnd, DeckOfCards[] cards)
         {
-
-            int ifAce = 10;
-            int ace = deck.Points[0];
-            int card = rnd.Next(deck.Points.Length);
-                       
-            if (deck.Points[card] == ace && UserPoints > ifAce)
-            {
-                UserPoints = UserPoints - ifAce;        // if we have Ace when on hand 11 points or more, he will be cost 1 point
-
-            }
-
-            UserPoints += deck.Points[card];
-
-            Console.WriteLine($"You receive {deck.Cards[card]}. Current points: {UserPoints}.");
-            
+            int card = rnd.Next(cards.Length);
+            UserPoints += (int)cards[card].Card;
+            Console.WriteLine($"You receive {cards[card].Card} {cards[card].Suit}. Current points: {UserPoints}.");
         }
-
     }
-
-
-
-
 }
 
 
