@@ -17,35 +17,39 @@ namespace BlackJackGame
                 int computerVictory = 0;
                 PlayerUser user = new PlayerUser();
                 PlayerComputer computer = new PlayerComputer();
-                CalculateResults result = new CalculateResults();
+                DeterminationWinner determinationWinner = new DeterminationWinner();
                 Random rnd = new Random();
                 DeckOfCards deck = new DeckOfCards();
-                DeckOfCards[] cards = deck.CreateDeck();
-                DeckOfCards[] card = deck.Shuffle(rnd, cards);
                 do
                 {
                     Console.Clear();
+                    Card[] card = deck.Shuffle(rnd);
+                    int counter = card.Length;
                     const int computerStep = 1;
                     const int userStep = 2;
-                    int firstStep = rnd.Next(computerStep, 3);      
-                    if (firstStep == computerStep)         
+                    int firstStep = rnd.Next(computerStep, 3);
+                    if (firstStep == computerStep)
                     {
                         Console.WriteLine("Computer receives first cards.");
-                        computer.FirstGameComputer(rnd, card);
-                        user.FirstGameUser(rnd, card);
+                        computer.FirstGameComputer(card, counter);
+                        counter -= 2;
+                        user.FirstGameUser(card, counter);
+                        counter -= 2;
                     }
-                    if (firstStep == userStep)       
+                    if (firstStep == userStep)
                     {
                         Console.WriteLine("You receive first cards.");
-                        user.FirstGameUser(rnd, card);
-                        computer.FirstGameComputer(rnd, card);
+                        user.FirstGameUser(card, counter);
+                        counter -= 2;
+                        computer.FirstGameComputer(card, counter);
+                        counter -= 2;
                     }
                     Console.WriteLine();
                     Console.WriteLine("Computer and you have 2 cards.");
                     Console.WriteLine();
                     while (true)
                     {
-                        if (firstStep == computerStep)          
+                        if (firstStep == computerStep)
                         {
                             if (computer.ComputerPoints == 21 || computer.ComputerPoints == 22)
                             {
@@ -53,9 +57,10 @@ namespace BlackJackGame
                                 computerVictory++;
                                 break;
                             }
-                            computer.GameComputer(rnd, card);
+                            computer.GameComputer(card, counter);
+                            --counter;
                         }
-                        if (firstStep == userStep)               
+                        if (firstStep == userStep)
                         {
                             if (user.UserPoints == 21 || user.UserPoints == 22)
                             {
@@ -68,17 +73,19 @@ namespace BlackJackGame
                         string answer = Console.ReadLine();
                         if (answer == "hit" || answer == "h")
                         {
-                            user.GameUser(rnd, card);
-                            computer.GameComputer(rnd, card);
+                            user.GameUser(card, counter);
+                            --counter;
+                            computer.GameComputer(card, counter);
+                            --counter;
                             if (user.UserPoints >= 21)
                             {
-                                result.ComparisonPoints(user.UserPoints, computer.ComputerPoints);
+                                determinationWinner.CheckPoints(user.UserPoints, computer.ComputerPoints);
                                 break;
                             }
                         }
                         if (answer == "stay" || answer == "s")
                         {
-                            result.ComparisonPoints(user.UserPoints, computer.ComputerPoints);
+                            determinationWinner.CheckPoints(user.UserPoints, computer.ComputerPoints);
                             break;
                         }
                     }
@@ -87,8 +94,8 @@ namespace BlackJackGame
                 } while (restart == "yes" || restart == "y");
                 if (restart == "no" || restart == "n")
                 {
-                    userVictory += result.UserVictories;    
-                    computerVictory += result.ComputerVictories;
+                    userVictory += determinationWinner.UserVictories;
+                    computerVictory += determinationWinner.ComputerVictories;
                     Console.WriteLine($"You won {userVictory} times.");
                     Console.WriteLine($"Computer won {computerVictory} times.");
                 }

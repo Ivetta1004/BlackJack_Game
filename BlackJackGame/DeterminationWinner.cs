@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace BlackJackGame
 {
-    public struct CalculateResults
+    public struct DeterminationWinner
     {
         public int UserVictories;
         public int ComputerVictories;
-        public int ComparisonPoints(int userPoints, int computerPoints)
+        public int CheckPoints(int userPoints, int computerPoints)
         {
             if (computerPoints == userPoints)           
             {
@@ -40,14 +40,14 @@ namespace BlackJackGame
                 Console.WriteLine("Computer won. You lost.");
                 return ComputerVictories++;
             }     
-            if (computerPoints < 22 && userPoints < 22 && computerPoints > userPoints)
+            if (computerPoints > userPoints)
             {
                 Console.WriteLine($"Computer: {computerPoints} points.");
                 Console.WriteLine($"User: {userPoints} points.");
                 Console.WriteLine("Computer won. You lost.");
                 return ComputerVictories++;
             }
-            if (computerPoints < 22 && userPoints < 22 && userPoints > computerPoints)
+            if (userPoints > computerPoints)
             {
                 Console.WriteLine($"Computer: {computerPoints} points.");
                 Console.WriteLine($"User: {userPoints} points.");

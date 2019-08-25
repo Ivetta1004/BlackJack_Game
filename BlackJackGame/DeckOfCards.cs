@@ -6,34 +6,11 @@ using System.Threading.Tasks;
 
 namespace BlackJackGame
 {
-    public enum Card
-    {
-        Jack = 2,
-        Lady = 3,
-        King = 4,
-        Six = 6,
-        Seven = 7,
-        Eight = 8,
-        Nine = 9,
-        Ten = 10,
-        Ace = 11
-    }
-
-    public enum Suit
-    {
-        Heart,
-        Diamond,
-        Spade,
-        Club
-    }
-
     public struct DeckOfCards
     {
-        public Suit Suit;
-        public Card Card;
-        public DeckOfCards[] CreateDeck()
+        public Card[] CreateDeck()
         {
-            DeckOfCards[] deck = new DeckOfCards[36];
+            Card[] cards = new Card[36];
             int i = 0;
             for (int x = 0; x < 4; x++)
             {
@@ -41,7 +18,7 @@ namespace BlackJackGame
                 {
                     if (y != 5)
                     {
-                        deck[i] = (new DeckOfCards() { Suit = (Suit)x, Card = (Card)y });
+                        cards[i] = (new Card { Suit = (Suit)x, Face = (Face)y });
                         i++;
                     }
                     else
@@ -50,14 +27,15 @@ namespace BlackJackGame
                     }
                 }
             }
-            return deck;
+            return cards;
         }
-        public DeckOfCards[] Shuffle(Random rnd, DeckOfCards[] cards)
+        public Card[] Shuffle(Random rnd)
         {
+            Card[] cards = CreateDeck();
             for (int i = cards.Length - 1; i >= 0; i--)
             {
                 int j = rnd.Next(cards.Length);
-                DeckOfCards temp = cards[j];
+                Card temp = cards[j];
                 cards[j] = cards[i];
                 cards[i] = temp;
             }
@@ -65,3 +43,4 @@ namespace BlackJackGame
         }
     }
 }
+

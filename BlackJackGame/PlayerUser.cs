@@ -9,19 +9,19 @@ namespace BlackJackGame
     public struct PlayerUser
     {
         public int UserPoints;
-        public void FirstGameUser(Random rnd, DeckOfCards[] card)
+        public void FirstGameUser(Card[] card, int counter)
         {
-            int firstCard = rnd.Next(card.Length);
-            int secondCard = rnd.Next(card.Length);
-            UserPoints = (int)card[firstCard].Card + (int)card[secondCard].Card;
-            Console.WriteLine($"You receive {card[firstCard].Card} {card[firstCard].Suit} and {card[secondCard].Card} {card[secondCard].Suit}. " +
+            int firstCard = --counter;
+            int secondCard = --counter;
+            UserPoints = (int)card[firstCard].Face + (int)card[secondCard].Face;
+            Console.WriteLine($"You receive {card[firstCard].Face} {card[firstCard].Suit} and {card[secondCard].Face} {card[secondCard].Suit}. " +
                  $"Current points: {UserPoints}.");
         }
-        public void GameUser(Random rnd, DeckOfCards[] cards)
+        public void GameUser(Card[] cards, int counter)
         {
-            int card = rnd.Next(cards.Length);
-            UserPoints += (int)cards[card].Card;
-            Console.WriteLine($"You receive {cards[card].Card} {cards[card].Suit}. Current points: {UserPoints}.");
+            int card = --counter;
+            UserPoints += (int)cards[card].Face;
+            Console.WriteLine($"You receive {cards[card].Face} {cards[card].Suit}. Current points: {UserPoints}.");
         }
     }
 }

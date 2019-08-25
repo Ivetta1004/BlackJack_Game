@@ -43,7 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CalculateResults.cs" />
+    <Compile Include="DeterminationWinner.cs" />
+    <Compile Include="Card.cs" />
     <Compile Include="DeckOfCards.cs" />
     <Compile Include="PlayerComputer.cs" />
     <Compile Include="PlayerUser.cs" />

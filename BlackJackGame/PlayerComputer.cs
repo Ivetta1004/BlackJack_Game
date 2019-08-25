@@ -9,19 +9,19 @@ namespace BlackJackGame
     public struct PlayerComputer
     {
         public int ComputerPoints;
-        public void FirstGameComputer(Random rnd, DeckOfCards[] card)
+        public void FirstGameComputer(Card[] cards, int counter)
         {
-            int firstCard = rnd.Next(card.Length);
-            int secondCard = rnd.Next(card.Length);
-            ComputerPoints = (int)card[firstCard].Card + (int)card[secondCard].Card;           
+            int firstCard = --counter;
+            int secondCard = --counter;
+            ComputerPoints = (int)cards[firstCard].Face + (int)cards[secondCard].Face;
         }
-        public void GameComputer(Random rnd, DeckOfCards[] cards)
+        public void GameComputer(Card[] cards, int counter)
         {
-            int card = rnd.Next(cards.Length);
             if (ComputerPoints <= 17)
             {
-                ComputerPoints += (int)cards[card].Card;
-            }          
+                int card = --counter;
+                ComputerPoints += (int)cards[card].Face;
+            }
         }
     }
 }
