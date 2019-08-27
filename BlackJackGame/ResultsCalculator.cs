@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlackJackGame
 {
-    public struct DeterminationWinner
+    public struct ResultsCalculator
     {
         public int UserVictories;
         public int ComputerVictories;

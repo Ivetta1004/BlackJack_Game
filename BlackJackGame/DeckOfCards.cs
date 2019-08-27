@@ -40,7 +40,7 @@ namespace BlackJackGame
                 cards[i] = temp;
             }
             return cards;
-        }
+        }    
     }
 }
 

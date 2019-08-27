@@ -17,7 +17,7 @@ namespace BlackJackGame
                 int computerVictory = 0;
                 PlayerUser user = new PlayerUser();
                 PlayerComputer computer = new PlayerComputer();
-                DeterminationWinner determinationWinner = new DeterminationWinner();
+                ResultsCalculator result = new ResultsCalculator();
                 Random rnd = new Random();
                 DeckOfCards deck = new DeckOfCards();
                 do
@@ -79,13 +79,13 @@ namespace BlackJackGame
                             --counter;
                             if (user.UserPoints >= 21)
                             {
-                                determinationWinner.CheckPoints(user.UserPoints, computer.ComputerPoints);
+                                result.CheckPoints(user.UserPoints, computer.ComputerPoints);
                                 break;
                             }
                         }
                         if (answer == "stay" || answer == "s")
                         {
-                            determinationWinner.CheckPoints(user.UserPoints, computer.ComputerPoints);
+                            result.CheckPoints(user.UserPoints, computer.ComputerPoints);
                             break;
                         }
                     }
@@ -94,8 +94,8 @@ namespace BlackJackGame
                 } while (restart == "yes" || restart == "y");
                 if (restart == "no" || restart == "n")
                 {
-                    userVictory += determinationWinner.UserVictories;
-                    computerVictory += determinationWinner.ComputerVictories;
+                    userVictory += result.UserVictories;
+                    computerVictory += result.ComputerVictories;
                     Console.WriteLine($"You won {userVictory} times.");
                     Console.WriteLine($"Computer won {computerVictory} times.");
                 }
