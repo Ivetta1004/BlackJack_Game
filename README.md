@@ -4,11 +4,11 @@ My first game
 
 1. game has 36 cards;
 1. cost of cards in points: 
-  + Ace - 11 points;
-  + King - 4 points;
-  + Lady - 3 points;
-  + Jack - 2 points;
-  + The other cards at their value;
+  Ace - 11 points,
+  King - 4 points,
+  Lady - 3 points,
+  Jack - 2 points,
+  The other cards at their value;
 1. 2 players (you and computer);
 1. the goal of the game is to collect 21 points;
 1. at first you should enter who receives first cards. You and computer receive 2 cards; 
